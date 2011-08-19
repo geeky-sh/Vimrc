@@ -159,4 +159,4 @@ imap <C-g> <C-g>u
 " fugitive
 nmap <leader>gs :Gstatus<enter>
 nmap <leader>gd :Gdiff<enter>
-"nmap <leader>g
+nmap <leader>gc :Gcommit<enter>
