@@ -154,3 +154,7 @@ imap <C-g> <C-g>u
 nmap <leader>gs :Gstatus<enter>
 nmap <leader>gd :Gdiff<enter>
 nmap <leader>gc :Gcommit<enter>
+nmap <leader>gl :Glog<enter>
+" these help with navigating gitlog in fugitive
+nmap <f1> :cprevious<enter>
+nmap <f2> :cnext<enter>
