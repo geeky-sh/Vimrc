@@ -139,12 +139,6 @@ filetype indent on
 " use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
 
-" switch on syntax highlighting
-syntax on
-
-" enable filetype detection, plus loading of filetype plugins
-filetype plugin on
-
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "/usr/bin/firefox"
 
