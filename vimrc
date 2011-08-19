@@ -152,10 +152,6 @@ let g:haddock_browser = "/usr/bin/firefox"
 let g:haskell_indent_if = 0
 let g:haskell_indent_case = 0
 
-" vimwiki macilla
-" oletuksena <c-space> mutta macilla tuo on näppisasettelun vaihto
-"noremap <leader>tt <Plug>VimwikiToggleListItem
-
 imap <C-g> <C-g>u
 "iunmap <C-g>S
 "iunmap <C-g><C-S>
