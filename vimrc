@@ -158,3 +158,11 @@ nmap <leader>gl :Glog<enter>
 " these help with navigating gitlog in fugitive
 nmap <f1> :cprevious<enter>
 nmap <f2> :cnext<enter>
+
+" vimdiff navigation helpers based on these:
+" Welcome to Puneet’s World » Usefull vimdiff commands to view diff and merge
+" http://puneetworld.com/archives/48
+nmap <F3> dp
+nmap <F4> do
+nmap <F7> [czz
+nmap <F8> ]czz
