@@ -154,7 +154,7 @@ imap <C-g> <C-g>u
 nmap <leader>gs :Gstatus<enter>
 nmap <leader>gd :Gdiff<enter>
 nmap <leader>gc :Gcommit<enter>
-nmap <leader>gl :Glog<enter>
+nmap <leader>gl :gitv<enter>
 " these help with navigating gitlog in fugitive
 nmap <f1> :cprevious<enter>
 nmap <f2> :cnext<enter>
@@ -166,3 +166,19 @@ nmap <F3> dp
 nmap <F4> do
 nmap <F7> [czz
 nmap <F8> ]czz
+
+
+" gitv plugin:
+" 4.2 Open Horizontal
+"
+" This is the default layout to use in browser mode. If set to 0 then browser
+" mode will open in a vertical split. If set to 1 then browser mode will open
+" in
+" a horizontal split. If set to 'auto' then browser mode will open in a
+" vertical
+" split unless the content fits better in a horizontal split, in which case it
+" will open horizontally.
+"
+" The commit browser width and height is automatically sized to best fit the
+" content in all modes and settings.
+let g:Gitv_OpenHorizontal = 1
