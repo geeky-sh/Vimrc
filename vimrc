@@ -150,6 +150,9 @@ imap <C-g> <C-g>u
 "iunmap <C-g>S
 "iunmap <C-g><C-S>
 
+nmap - g;
+nmap + g,
+
 " fugitive
 nmap <leader>gs :Gstatus<enter>
 nmap <leader>gd :Gdiff<enter>
