@@ -166,8 +166,8 @@ nmap <f2> :cnext<enter>
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet’s World » Usefull vimdiff commands to view diff and merge
 " http://puneetworld.com/archives/48
-nmap <F3> dp
-nmap <F4> do
+map <F3> :diffput<enter>
+map <F4> :diffget<enter>
 nmap <F7> [czz
 nmap <F8> ]czz
 
