@@ -187,3 +187,6 @@ nmap <F8> ]czz
 " The commit browser width and height is automatically sized to best fit the
 " content in all modes and settings.
 let g:Gitv_OpenHorizontal = 1
+
+" TagList plugin
+nmap <c-t> :TlistToggle<enter>
