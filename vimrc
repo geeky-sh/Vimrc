@@ -160,9 +160,6 @@ nmap <leader>gc :Gcommit<enter>
 nmap <leader>gl :gitv<enter>
 nmap <leader>ga :Git commit --amend<enter>
 nmap <leader>gD :Git diff --cached --color<enter>
-" these help with navigating gitlog in fugitive
-nmap <f1> :cprevious<enter>
-nmap <f2> :cnext<enter>
 
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet’s World » Usefull vimdiff commands to view diff and merge
