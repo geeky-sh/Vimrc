@@ -52,6 +52,12 @@ map <C-J> <C-W>
 map <C-K> <C-W>
 "------1 loppuu
 
+" c-y to copy rest of word above (instead of character)
+" The same for c-e (downwards)
+    inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
+    inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
+
+
 inoremap <Nul> <C-x><C-o>
 " ctrl+v inserts from x clipboard
 " inoremap <C-v> <Esc>:r !xclip -out<CR>
