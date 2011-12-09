@@ -209,3 +209,8 @@ let g:Gitv_OpenHorizontal = 1
 
 " TagList plugin
 nmap <c-t> :TlistToggle<enter>
+
+" ujihisa/neco-ghc - GitHub
+" https://github.com/ujihisa/neco-ghc
+" epic haskell completion
+    let $PATH=$PATH.":/home/mika/.cabal/bin"
