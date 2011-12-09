@@ -42,6 +42,16 @@ set directory=~/.vim/backup//
 "------
 set winminheight=0      " Allow windows to get fully squashed
 
+" Neocomplcache stuff
+    imap <tab> <c-n>
+    imap <s-tab> <c-p>
+    let g:neocomplcache_enable_at_startup=1
+    let g:neocomplcache_enable_smart_case=1
+    let g:neocomplcache_enable_camel_case_completion=1
+    let g:neocomplcache_enable_underbar_completion=1
+    let g:neocomplcache_enable_ignore_case=1
+    let g:neocomplcache_min_syntax_length=3
+    let g:neocomplcache_min_keyword_length=3
 
 " Switch between windows, maximizing the current window
 " lisätty 2011-04-29: ei maksimointia. toimii paremmin tabien kanssa
