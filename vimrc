@@ -152,6 +152,8 @@ imap <C-g> <C-g>u
 
 nmap - g;
 nmap + g,
+nmap <f11> :set list!<enter>
+nmap <f12> :set hlsearch!<enter>
 
 " fugitive
 nmap <leader>gs :Gstatus<enter>
