@@ -165,7 +165,6 @@ let g:haddock_browser = "/usr/bin/firefox"
 let g:haskell_indent_if = 0
 let g:haskell_indent_case = 0
 
-imap <C-g> <C-g>u
 "iunmap <C-g>S
 "iunmap <C-g><C-S>
 
@@ -194,6 +193,9 @@ map <F4> :diffget<enter>
 nmap <F7> [czz
 nmap <F8> ]czz
 
+" add undo points after every word.
+" makes it more convenient to do undo on complicated code.
+    imap <space> <c-g>u<c-v><space>
 
 " gitv plugin:
 " 4.2 Open Horizontal
