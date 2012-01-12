@@ -223,3 +223,13 @@ nmap <c-t> :TlistToggle<enter>
 " https://github.com/ujihisa/neco-ghc
 " epic haskell completion
     let $PATH=$PATH.":/home/mika/.cabal/bin"
+
+" Superior Haskell Interaction Mode
+" SHIM
+" vim-scripts/Superior-Haskell-Interaction-Mode-SHIM - GitHub
+" https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM/
+    autocmd FileType haskell nmap <f10> :GhciRange<CR>
+    autocmd FileType haskell vmap <f10> :GhciRange<CR>
+    autocmd FileType haskell nmap <f9> :GhciFile<CR>
+    autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
+    let g:shim_ghciTimeout=2
