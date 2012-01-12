@@ -67,6 +67,9 @@ map <C-K> <C-W>
     inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
     inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
 
+" QuickFix navigation
+    nmap <j> :cn<enter>
+    nmap <k> :cprev<enter>
 
 inoremap <Nul> <C-x><C-o>
 " ctrl+v inserts from x clipboard
