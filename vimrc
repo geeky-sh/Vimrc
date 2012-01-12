@@ -193,6 +193,10 @@ map <F4> :diffget<enter>
 nmap <F7> [czz
 nmap <F8> ]czz
 
+" c-r c-r to read register " (last used register)
+    imap <c-r><c-r> <c-r>"
+    cmap <c-r><c-r> <c-r>"
+
 " add undo points after every word.
 " makes it more convenient to do undo on complicated code.
     imap <space> <c-g>u<c-v><space>
