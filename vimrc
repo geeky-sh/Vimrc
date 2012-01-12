@@ -42,6 +42,7 @@ set directory=~/.vim/backup//
 "------
 set winminheight=0      " Allow windows to get fully squashed
 
+
 " Neocomplcache stuff
     imap <tab> <c-n>
     imap <s-tab> <c-p>
@@ -103,7 +104,6 @@ function! CleverTab()
     return "\<C-N>"
   endif
 endfunction
-inoremap <Tab> <C-R>=CleverTab()<CR>
 
 
 " http://vim.wikia.com/wiki/Omni_completion_popup_menu
