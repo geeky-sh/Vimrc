@@ -1,78 +1,96 @@
-if $SHELL =~ 'bin/fish'
-    set shell=/bin/sh
-endif
+" Hard-coded for Windows and cygwin.
+" If not set to windows path, diffs cannot be displayed,
+" possibly other errors exist but have not been discovered.
+"if $SHELL =~ 'bin/fish'
+"    set shell=/bin/sh
+"endif
+" The idea is, on Windows, that this shell is the default when starting
+" so that git mergetool works (diff generation)
+" Then, when vim is started, we can switch to cmd.exe so that other stuff
+" works as well. :)
+" TODO doesn't work
+" set shell=c:\cygwin\bin\sh.exe
 
-se nu
-syntax on
-set t_Co=256
-"colorscheme desert256
-se background=dark
-"colorscheme solarized
-colorscheme zenburn
-set autoindent "teslti
-set backspace=2
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set nocompatible
-set ruler
-set scrolloff=1
-set tildeop
-"inoremap < <><ESC>i
-set matchpairs=(:),{:},[:],<:>
-set ignorecase
-filetype plugin on
-set sw=4 
-set mouse=a
-set autoread
-set backspace=eol,start,indent
-set fileencoding=utf-8
-set quoteescape
-" tällä voi avata uusia buffereita vaikka nykysessä on muutoksia
-set hidden
-" gvim haluaa spell checkata kaikki, otan sen pois
-set nospell
+" ----------------
+" Settings section
+" ----------------
+    se nu
+    syntax on
+    set t_Co=256
+    "colorscheme desert256
+    se background=dark
+    "colorscheme solarized
+    colorscheme zenburn
+    set autoindent "teslti
+    set backspace=2
+    set expandtab
+    set tabstop=4
+    set shiftwidth=4
+    set nocompatible
+    set ruler
+    set scrolloff=1
+    set tildeop
+    "inoremap < <><ESC>i
+    set matchpairs=(:),{:},[:],<:>
+    set ignorecase
+    filetype plugin on
+    set sw=4 
+    set mouse=a
+    set autoread
+    set backspace=eol,start,indent
+    set fileencoding=utf-8
+    set quoteescape
+    " tällä voi avata uusia buffereita vaikka nykysessä on muutoksia
+    set hidden
+    " gvim haluaa spell checkata kaikki, otan sen pois
+    set nospell
+    " Enabling Windows shortcuts for gvim - Vim Tips Wiki
+    " http://vim.wikia.com/wiki/Enabling_Windows_shortcuts_for_gvim
+        set winaltkeys=no
+    se cmdwinheight=2
+    set incsearch
+    set hlsearch
 
-" http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
-set backupdir=~/.vim/backup//
-set directory=~/.vim/backup//
 
-"------1
-"Seuraavat haettu http://www.8t8.us/vim/vim.html
-"------
-set winminheight=0      " Allow windows to get fully squashed
+    " http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
+    set backupdir=~/vim-backup/
+    set directory=~/vim-backup/
+    " http://www.8t8.us/vim/vim.html
+    set winminheight=0      " Allow windows to get fully squashed
 
 
-" Neocomplcache stuff
-    imap <tab> <c-n>
-    imap <s-tab> <c-p>
-    " snippet expansion key
-    imap å <Plug>(neocomplcache_snippets_expand)
-    let g:neocomplcache_enable_at_startup=1
-    let g:neocomplcache_enable_smart_case=1
-    let g:neocomplcache_enable_camel_case_completion=1
-    let g:neocomplcache_enable_underbar_completion=1
-    let g:neocomplcache_enable_ignore_case=1
-    let g:neocomplcache_min_syntax_length=3
-    let g:neocomplcache_min_keyword_length=3
 
-" Switch between windows, maximizing the current window
-" lisätty 2011-04-29: ei maksimointia. toimii paremmin tabien kanssa
+    map <C-J> <C-W>
+    map <C-K> <C-W>
 
-"map <C-J> <C-W>j<C-W>_
-"map <C-K> <C-W>k<C-W>_
-map <C-J> <C-W>
-map <C-K> <C-W>
-"------1 loppuu
+" Add undo steps after each word.
+" Really useful when quickly editing.
+    imap <space> <c-g>u<c-v><space>
+" Complete 'read last register (")' command by double ctrl+r
+    cmap <c-r><c-r> <c-r>"
+    imap <c-r><c-r> <c-r>"
+" Wordwise Ctrl-Y in insert mode - Vim Tips Wiki
+" http://vim.wikia.com/wiki/Wordwise_Ctrl-Y_in_insert_mode
+"
+inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
+inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
 
-" c-y to copy rest of word above (instead of character)
-" The same for c-e (downwards)
-    inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
-    inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
-
-" QuickFix navigation
-    nmap <j> :cn<enter>
-    nmap <k> :cprev<enter>
+" camelcasemotion.vim
+    " To avoid losing the (rarely used) |,| mapping (which repeats latest f, t, F or
+    " T in opposite direction), you can remap it to ,,: >
+    nnoremap ,, ,
+    xnoremap ,, ,
+    onoremap ,, ,
+    " Fix <leader>w wait time
+    " Due to AlignMaps mapping ,w=
+    " TODO doesn't work since key isn't bound yet when sourcing .vimrc.
+    " It's bound later, not sure where. Maybe autoload/ dir.
+    " unmap <leader>w=
+    " easier camel case usage with Alt
+    " TODO doesn't work on virtual terminal vim
+    " map <leader><e> <leader>e
+    " map <leader><b> <leader>b
+    " map <leader><w> <leader>w
 
 inoremap <Nul> <C-x><C-o>
 " ctrl+v inserts from x clipboard
@@ -84,6 +102,48 @@ let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1 
 
+" ------------------------------
+" Neocomplcache
+" ------------------------------
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+    
+    " <TAB>: completion.
+    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <s-TAB> <c-p>
+    imap <a-e>     <Plug>(neocomplcache_snippets_expand)
+    smap <a-e>     <Plug>(neocomplcache_snippets_expand)
+    " Edit with alt+E
+    " alt+e is in use by AlignMaps
+    nmap <a-E>     :NeoComplCacheEditSnippets<enter>
+    inoremap <expr><a-g>     neocomplcache#undo_completion()
+    inoremap <expr><a-l>     neocomplcache#complete_common_string()
+    " <C-h>, <BS>: close popup and delete backword char.
+    inoremap <expr><a-h> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    inoremap <expr><a-y>  neocomplcache#close_popup()
+    " inoremap <expr><a-e>  neocomplcache#cancel_popup()
+    " imap <tab>   <c-n>
+    " imap <s-tab> <c-p>
+    " neocomplcache - Ultimate auto completion system for Vim : vim online
+    " http://www.vim.org/scripts/script.php?script_id=2620
+    let g:neocomplcache_enable_at_startup = 1
+    " When a capital letter is included in input, neocomplcache does
+    " not ignore the upper- and lowercase.
+    let g:neocomplcache_enable_smart_case = 1
+    " Whether to select the first element or not
+    let g:neocomplcache_enable_auto_select = 0
+    " When you input a capital letter, this variable controls
+    " whether neocomplcache takes an ambiguous searching as an end
+    " of the words in it. For example, neocomplcache come to
+    " match it with ArgumentsException when you input it with AE.
+    let g:neocomplcache_enable_camel_case_completion = 1
+    " When you input _, this variable controls whether
+    " neocomplcache takes an ambiguous searching as an end of the
+    " words in it.  For example, neocomplcache come to match it
+    " with "public_html" when you input it with "p_h".
+    let g:neocomplcache_enable_underbar_completion = 1
 
 " lähde: http://vim.wikia.com/wiki/Using_vim_as_an_IDE_all_in_one
 " --------------------
@@ -91,22 +151,6 @@ let g:miniBufExplModSelTarget = 1
 " --------------------
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
-
-
-" http://vim.wikia.com/wiki/Smart_mapping_for_tab_completion
-function! CleverTab()
-  if pumvisible()
-    return "\<C-N>"
-  endif
-  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
-    return "\<Tab>"
-  elseif exists('&omnifunc') && &omnifunc != ''
-    return "\<C-X>\<C-O>"
-  else
-    return "\<C-N>"
-  endif
-endfunction
-
 
 " http://vim.wikia.com/wiki/Omni_completion_popup_menu
 highlight Pmenu ctermbg=238 gui=bold
@@ -119,9 +163,6 @@ set ofu=syntaxcomplete#Complete
 "nnoremap : q:i
 "nnoremap / q/i
 "nnoremap ? q?i
-
-se cmdwinheight=2
-se incsearch
 
 " indenting xml
 " http://uucode.com/blog/2005/06/15/indenting-xml-in-vim/ 
@@ -195,14 +236,6 @@ map <F4> :diffget<enter>
 nmap <F7> [czz
 nmap <F8> ]czz
 
-" c-r c-r to read register " (last used register)
-    imap <c-r><c-r> <c-r>"
-    cmap <c-r><c-r> <c-r>"
-
-" add undo points after every word.
-" makes it more convenient to do undo on complicated code.
-    imap <space> <c-g>u<c-v><space>
-
 " gitv plugin:
 " 4.2 Open Horizontal
 "
@@ -221,6 +254,13 @@ let g:Gitv_OpenHorizontal = 1
 " TagList plugin
 nmap <c-t> :TlistToggle<enter>
 
+" Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by
+" Ostrygen au FileType cs
+au FileType cs set foldmethod=marker
+au FileType cs set foldmarker={,}
+au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
+au FileType cs set foldlevelstart=2
+
 " ujihisa/neco-ghc - GitHub
 " https://github.com/ujihisa/neco-ghc
 " epic haskell completion
@@ -235,11 +275,6 @@ nmap <c-t> :TlistToggle<enter>
     autocmd FileType haskell nmap <f9> :GhciFile<CR>
     autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
     let g:shim_ghciTimeout=2
-
-" YankRing
-" Vim plugin for advanced clipboard history.
-nmap <c-b> :YRShow<enter>
-
 
 " Auto highlight current word when idle - Vim Tips Wiki
 " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
@@ -265,3 +300,24 @@ nmap <c-b> :YRShow<enter>
         return 1
       endif
     endfunction
+
+" improved autoread for console vim
+    source ~/.vim/autoread.vimscript
+    let autoreadargs={'autoread':1} 
+    execute WatchForChanges("*",autoreadargs) 
+
+" YankRing
+    " Vim already maintains a list of numbered registers containing the last
+    " yanked item and the previous 9 deletes. These items can be referenced
+    " using [register]p, so "0p will paste the last yank, "1p will paste the
+    " last delete, "2p the 2nd last delete. For more information see
+    " |quote_number|.
+    " If you wish the YankRing to maintain these numbered registers so
+    " the top 10 elements in the YankRing are in the numbered reqisters 0-9
+    " you can put the following in your |vimrc| >
+    let g:yankring_manage_numbered_reg = 1
+	" Don't map the dot operator, since I have a better mapping for it.
+	let g:yankring_map_dot=0
+    " Show YankRing
+    " in B since <c-y> is in use as scroll text down
+    map <c-B> :YRShow<enter>
