@@ -235,3 +235,8 @@ nmap <c-t> :TlistToggle<enter>
     autocmd FileType haskell nmap <f9> :GhciFile<CR>
     autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
     let g:shim_ghciTimeout=2
+
+" YankRing
+" Vim plugin for advanced clipboard history.
+nmap <c-b> :YRShow<enter>
+
