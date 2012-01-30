@@ -53,8 +53,8 @@
 
 
     " http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
-    set backupdir=~/vim-backup/
-    set directory=~/vim-backup/
+    set backupdir=~/vim-tmp/
+    set directory=~/vim-tmp/
     " http://www.8t8.us/vim/vim.html
     set winminheight=0      " Allow windows to get fully squashed
 
