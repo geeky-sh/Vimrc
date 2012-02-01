@@ -234,7 +234,7 @@ nmap <leader>gD :Git diff --cached --color<enter>
 nmap <leader>gh :r !git log --format=format:\%s -1
 
 " vimdiff navigation helpers based on these:
-" Welcome to Puneet’s World » Usefull vimdiff commands to view diff and merge
+" Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
 " http://puneetworld.com/archives/48
 map <F3> :diffput<enter>
 map <F4> :diffget<enter>
@@ -305,6 +305,92 @@ au FileType cs set foldlevelstart=2
         return 1
       endif
     endfunction
+
+" Error using the :GDiff command of fugitive.vim using gvim for windows and
+" msys git 1.7.0.2 - Stack Overflow
+" http://stackoverflow.com/questions/2932399/error-using-the-gdiff-command-of-fugitive-vim-using-gvim-for-windows-and-msys-g
+set directory+=,~/tmp,$TMP
+" for gvim on Windows
+"set guifont=Consolas:h9:cANSI
+set guifont="Monospace 9"
+
+" downloaded .Net 4 source code and extracted it to a local folder. Then ran 
+"     ctags --recurse -f csharptags --extra=+fq --fields=+ianmzS --c#-kinds=cimnp "C:\Documents and Settings\
+"     Mika\Documents\RefSrc\Source\.Net\4.0\DEVDIV_TFS\Dev10\Releases\RTMRel\"
+" That resulted in a file called csharptags. When this file is loaded as a tag
+" file in Vim, I can search for existing words in the tag file.
+" I can also complete words based on all tags.
+"     set tags+=C:\projektit\csharptags
+" This bit includes all tag files in the current directory
+" Not sure if want.
+" Kevin's Vim Tips and Tricks
+" http://www.8t8.us/vim/vim.html
+" Hard-coded project tag files:
+    " eLogic
+    set tags+=~/ekassatime/eLogic/tags;
+    " eSoapApi
+    set tags+=~/ekassatime/eSoapApi/tags;
+" Removes tag completion from ctrl+n completion list.
+" If this is not done, the completion will take very long to complete.
+set complete=.,w,b,u,i
+" Open tag search. Makes it possible to open the tag list in insert mode on a
+" non-US keyboard.
+imap <c-a> <c-x><c-]>
+
+" Fugitive.vim - browsing the git object database
+" http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" 
+map <a-t> :TBEMinimal<enter>
+" For CamelCaseMotion plugin
+"    map <a-e> <leader>e
+"    map <a-w> <leader>w
+"    map <a-b> <leader>b
+
+" Set up c# building!
+    "set makeprg=msbuild\ /nologo\ /v:Detailed\ /property:OutputPath=bin\Debug\ /property:GenerateFullPaths=true
+    " GenerateFullPaths should help with vim's quickfix navigating
+    " Configuration and Platform properties are required by msbuild on some
+    " projects
+    " set makeprg=C:/Windows/Microsoft.NET/Framework/v4.0.30319/msbuild.exe\ /nologo\ /v:q\ /property:OutputPath=bin\Debug\ /property:GenerateFullPaths=true
+    " Vim :help makeprg says:
+    " Note that a '|' must be escaped twice: once for ":set" and once for
+	" the interpretation of a command.
+    map <c-f8> :make<enter>
+    set makeprg=/home/joose/bin/mdtool.build.errors.only.sh
+    " (Black magic)
+    " TODO probably doesn't work on terminal vim
+    set errorformat=\ %#%f(%l\\\,%c):\ %m
+    map <c-f8> :make<enter>
+    " leader+j and leader+k to go down and up in the quickfix list
+    " The idea is 'down' and 'up'
+    map <leader>j :cnext<enter>
+    map <leader>k :cprevious<enter>
+
+" Use cygwin shell - Vim Tips Wiki
+" http://vim.wikia.com/wiki/Use_cygwin_shell
+"
+	"******* current file directory commands WINDOWS **********************
+	""%:p:h:8 gets the current file's directory and :8 is what puts it
+	"into dos short form
+	"
+	""open explorer in the current file's directory
+	map ,E :!start explorer %:p:h:8<CR>
+
+	"open windows command prompt in the current file's directory
+	"map ,c :!start cmd /k cd %:p:h:8<CR>
+	"
+	""open cygwin bash in the current file's directory
+	map ,B :!start bash --login -i -c 'cd `cygpath "%:p:h:8"`;bash'<CR>
+
+	"******* end current file directory commands WINDOWS ******************
+	"
+" XML Completion - Completion for XML files : vim online
+" http://www.vim.org/scripts/script.php?script_id=1442
+    " If g:xmlSubelements == "yes" (default "no"), completion of element names
+    " is restricted on subelements of parent element.
+    let g:xmlSubelements="yes"
 
 " improved autoread for console vim
     source ~/.vim/autoread.vimscript
