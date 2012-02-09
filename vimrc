@@ -259,10 +259,7 @@ nmap <c-t> :TlistToggle<enter>
 
 " Folding : http://vim.wikia.com/wiki/Syntax-based_folding, see comment by
 " Ostrygen au FileType cs
-au FileType cs set foldmethod=marker
-au FileType cs set foldmarker={,}
-au FileType cs set foldtext=substitute(getline(v:foldstart),'{.*','{...}',)
-au FileType cs set foldlevelstart=2
+au FileType cs set foldmethod=indent
 
 " ujihisa/neco-ghc - GitHub
 " https://github.com/ujihisa/neco-ghc
