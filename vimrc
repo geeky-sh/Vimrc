@@ -59,9 +59,14 @@
     set winminheight=0      " Allow windows to get fully squashed
 
 
+" Paste toggle mapping for reliable pasting.
+" Toggles paste on/off and shows the present value.
+map <f5> :silent set paste!<enter>:set paste?<enter>
 
     map <C-J> <C-W>
     map <C-K> <C-W>
+
+
 
 " Add undo steps after each word.
 " Really useful when quickly editing.
