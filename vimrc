@@ -144,6 +144,9 @@ let g:miniBufExplModSelTarget = 1
     " words in it.  For example, neocomplcache come to match it
     " with "public_html" when you input it with "p_h".
     let g:neocomplcache_enable_underbar_completion = 1
+    " This variable controls whether neocomplcache accept wild
+    " card character '*' for input-saving.
+    let g:neocomplcache_enable_wildcard = 1
 
 " lähde: http://vim.wikia.com/wiki/Using_vim_as_an_IDE_all_in_one
 " --------------------
