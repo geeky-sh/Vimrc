@@ -136,22 +136,33 @@ let g:miniBufExplModSelTarget = 1
     let g:neocomplcache_enable_at_startup = 1
     " When a capital letter is included in input, neocomplcache does
     " not ignore the upper- and lowercase.
-    let g:neocomplcache_enable_smart_case = 1
+    let g:neocomplcache_enable_smart_case = 0
     " Whether to select the first element or not
     let g:neocomplcache_enable_auto_select = 0
     " When you input a capital letter, this variable controls
     " whether neocomplcache takes an ambiguous searching as an end
     " of the words in it. For example, neocomplcache come to
     " match it with ArgumentsException when you input it with AE.
-    let g:neocomplcache_enable_camel_case_completion = 1
+    let g:neocomplcache_enable_camel_case_completion = 0
     " When you input _, this variable controls whether
     " neocomplcache takes an ambiguous searching as an end of the
     " words in it.  For example, neocomplcache come to match it
     " with "public_html" when you input it with "p_h".
-    let g:neocomplcache_enable_underbar_completion = 1
+    let g:neocomplcache_enable_underbar_completion = 0
     " This variable controls whether neocomplcache accept wild
     " card character '*' for input-saving.
     let g:neocomplcache_enable_wildcard = 1
+    " When you input one character, this variable controls whether
+    " neocomplcache takes an ambiguous searching as an end of the
+    " words in it.  For example, neocomplcache come to match it
+    " with "public_html" or "PublicHtml" when you input it with "ph".
+    " This variable disables
+    " |g:neocomplcache_enable_camel_case_completion| and
+    " |g:neocomplcache_enable_underbar_completion|.
+    " Note: This match is too heavy. So, it is enabled when your
+    " input is less than 8 characters.
+    " Own comment: the ultimate completion! :)
+    let g:neocomplcache_enable_fuzzy_completion = 1
 
 " lähde: http://vim.wikia.com/wiki/Using_vim_as_an_IDE_all_in_one
 " --------------------
