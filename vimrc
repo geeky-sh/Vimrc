@@ -62,6 +62,12 @@
 " Paste toggle mapping for reliable pasting.
 " Toggles paste on/off and shows the present value.
 map <f5> :silent set paste!<enter>:set paste?<enter>
+" In insert mode, pressing ,. will change character case for the first letter
+" in the previous word. It will then continue editing like nothing happened.
+" Really useful when e.g. Neocomplcache will provide a completion that's
+" otherwise good but in the wrong case. Accepting the completion and quickly
+" pressing ,. will correct the case without interrupting the typing flow! :)
+imap ,. <esc>bv~gi
 
     map <C-J> <C-W>
     map <C-K> <C-W>
