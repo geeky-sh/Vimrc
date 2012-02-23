@@ -390,6 +390,9 @@ map <a-t> :TBEMinimal<enter>
     " Allows to insert a semicolon at the end of the current line in insert
     " mode. I use this to quickly complete lines and move to the next one.
     autocmd FileType cs imap ; <esc>A<C-v>;
+    " Complete c# source code from other buffers when writing git
+    " commit messages.
+    autocmd FileType cs autocmd FileType gitcommit call neocomplcache#set_dictionary_helper(g:neocomplcache_same_filetype_lists, "gitcommit", "cs")
 
 " Use cygwin shell - Vim Tips Wiki
 " http://vim.wikia.com/wiki/Use_cygwin_shell
