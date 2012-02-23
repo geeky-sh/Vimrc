@@ -384,6 +384,9 @@ map <a-t> :TBEMinimal<enter>
     " The idea is 'down' and 'up'
     map <leader>j :cnext<enter>
     map <leader>k :cprevious<enter>
+    " Allows to insert a semicolon at the end of the current line in insert
+    " mode. I use this to quickly complete lines and move to the next one.
+    autocmd FileType cs imap ; <esc>A<C-v>;
 
 " Use cygwin shell - Vim Tips Wiki
 " http://vim.wikia.com/wiki/Use_cygwin_shell
