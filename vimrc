@@ -34,7 +34,7 @@
     set matchpairs=(:),{:},[:],<:>
     set ignorecase
     filetype plugin on
-    set sw=4 
+    set sw=4
     set mouse=a
     set autoread
     set backspace=eol,start,indent
@@ -111,7 +111,7 @@ inoremap <Nul> <C-x><C-o>
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1 
+let g:miniBufExplModSelTarget = 1
 
 " ------------------------------
 " Neocomplcache
@@ -119,7 +119,7 @@ let g:miniBufExplModSelTarget = 1
     " Recommended key-mappings.
     " <CR>: close popup and save indent.
     inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-    
+
     " <TAB>: completion.
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <s-TAB> <c-p>
@@ -190,8 +190,8 @@ set ofu=syntaxcomplete#Complete
 "nnoremap ? q?i
 
 " indenting xml
-" http://uucode.com/blog/2005/06/15/indenting-xml-in-vim/ 
-map <F2> <Esc>:1,$!xmllint --format -<CR>
+" http://uucode.com/blog/2005/06/15/indenting-xml-in-vim/
+vmap <leader>fx :!xmllint --format -<CR>
 
 
 " vim git plugins
@@ -331,7 +331,7 @@ set directory+=,~/tmp,$TMP
 "set guifont=Consolas:h9:cANSI
 set guifont="Monospace 9"
 
-" downloaded .Net 4 source code and extracted it to a local folder. Then ran 
+" downloaded .Net 4 source code and extracted it to a local folder. Then ran
 "     ctags --recurse -f csharptags --extra=+fq --fields=+ianmzS --c#-kinds=cimnp "C:\Documents and Settings\
 "     Mika\Documents\RefSrc\Source\.Net\4.0\DEVDIV_TFS\Dev10\Releases\RTMRel\"
 " That resulted in a file called csharptags. When this file is loaded as a tag
@@ -358,7 +358,7 @@ imap <c-a> <c-x><c-]>
 " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 autocmd BufReadPost fugitive://* set bufhidden=delete
 
-" 
+"
 map <a-t> :TBEMinimal<enter>
 " For CamelCaseMotion plugin
 "    map <a-e> <leader>e
@@ -411,8 +411,8 @@ map <a-t> :TBEMinimal<enter>
 
 " improved autoread for console vim
     source ~/.vim/autoread.vimscript
-    let autoreadargs={'autoread':1} 
-    execute WatchForChanges("*",autoreadargs) 
+    let autoreadargs={'autoread':1}
+    execute WatchForChanges("*",autoreadargs)
 
 " YankRing
     " Vim already maintains a list of numbered registers containing the last
