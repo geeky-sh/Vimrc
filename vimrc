@@ -252,6 +252,9 @@ nmap <f12> :set hlsearch!<enter>
     " % needs to be escaped, otherwise vim inserts its register %
     " Note that no <enter> so user has the option of changing number of commits
     nmap <leader>gh :r !git log --format=format:\%s -1
+    " Remove trailing whitespace
+    " Mnemonic: delete whitespace
+    nmap <leader>dws silent! %s/\s\+$//ge
 
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
