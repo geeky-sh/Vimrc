@@ -241,17 +241,17 @@ nmap + g,
 nmap <f11> :set list!<enter>
 nmap <f12> :set hlsearch!<enter>
 
-" fugitive
-nmap <leader>gs :Gstatus<enter>
-nmap <leader>gd :Gdiff<enter>
-nmap <leader>gc :Gcommit<enter>
-nmap <leader>gl :gitv<enter>
-nmap <leader>ga :Git commit --amend<enter>
-nmap <leader>gD :Git diff --cached --color<enter>
-" this inserts the last commit message
-" % needs to be escaped, otherwise vim inserts its register %
-" Note that no <enter> so user has the option of changing number of commits
-nmap <leader>gh :r !git log --format=format:\%s -1
+" fugitive - Git integration!
+    nmap <leader>gs :Gstatus<enter>
+    nmap <leader>gd :Gdiff<enter>
+    nmap <leader>gc :Gcommit<enter>
+    nmap <leader>gl :gitv<enter>
+    nmap <leader>ga :Git commit --amend<enter>
+    nmap <leader>gD :Git diff --cached --color<enter>
+    " this inserts the last commit message
+    " % needs to be escaped, otherwise vim inserts its register %
+    " Note that no <enter> so user has the option of changing number of commits
+    nmap <leader>gh :r !git log --format=format:\%s -1
 
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
