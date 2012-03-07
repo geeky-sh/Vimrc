@@ -255,6 +255,8 @@ nmap <f12> :set hlsearch!<enter>
     " Remove trailing whitespace
     " Mnemonic: delete whitespace
     nmap <leader>dws :silent! %s/\s\+$//ge<enter>
+    " Ignore whitespace in diffs.
+    set diffopt+=iwhiteset diffopt+=iwhite
 
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
