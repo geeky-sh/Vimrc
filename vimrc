@@ -257,8 +257,9 @@ nmap <f12> :set hlsearch!<enter>
     nmap <leader>dws :silent! %s/\s\+$//ge<enter>
     vmap <leader>dws :s/\s\+$//ge<enter>
     " Ignore whitespace in diffs.
-    set diffopt+=iwhiteset diffopt+=iwhite
-
+    " Also shows current diffopt status.
+    nmap <kPlus>  :set diffopt+=iwhite<enter>:set diffopt<enter>
+    nmap <kMinus> :set diffopt-=iwhite<enter>:set diffopt<enter>
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
 " http://puneetworld.com/archives/48
