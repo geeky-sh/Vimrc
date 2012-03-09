@@ -260,6 +260,13 @@ nmap <f12> :set hlsearch!<enter>
     " Also shows current diffopt status.
     nmap <kPlus>  :set diffopt+=iwhite<enter>:set diffopt<enter>
     nmap <kMinus> :set diffopt-=iwhite<enter>:set diffopt<enter>
+
+" Align plugin stuff
+    " Align by words.
+    " Causes whitespace to appear at eol.
+    " Get rid of whitespace too.
+    vmap <leader>aw :Align \S\+<enter>gv:s/\s\+$//ge<enter>
+
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
 " http://puneetworld.com/archives/48
