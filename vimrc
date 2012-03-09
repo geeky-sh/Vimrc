@@ -255,6 +255,7 @@ nmap <f12> :set hlsearch!<enter>
     " Remove trailing whitespace
     " Mnemonic: delete whitespace
     nmap <leader>dws :silent! %s/\s\+$//ge<enter>
+    vmap <leader>dws :s/\s\+$//ge<enter>
     " Ignore whitespace in diffs.
     set diffopt+=iwhiteset diffopt+=iwhite
 
