@@ -449,3 +449,6 @@ map <a-t> :TBEMinimal<enter>
     " Show YankRing
     " in B since <c-y> is in use as scroll text down
     map <c-B> :YRShow<enter>
+
+" Buffet plugin configuration
+    map <leader>ä :Bufferlist<enter>
