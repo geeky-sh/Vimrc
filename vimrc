@@ -1,11 +1,16 @@
 " ----------------
 " Settings section
 " ----------------
+    " Toggle absolute line numbering
     se nu
     syntax on
+
+    " Stuff that has something to do with terminal colors
     set t_Co=256
-    se background=dark
+    set background=dark
+    " This looks about the same in terminal Vim and in gVim
     colorscheme zenburn
+
     set autoindent
     set backspace=2
     set expandtab
@@ -18,28 +23,36 @@
     set matchpairs=(:),{:},[:],<:>
     set ignorecase
     filetype plugin on
-    set sw=4
+    set shiftwidth=4
     set mouse=a
     set autoread
     set backspace=eol,start,indent
     set fileencoding=utf-8
     set quoteescape
-    " tällä voi avata uusia buffereita vaikka nykysessä on muutoksia
+    " Allows opening new buffers even if the current one has modifications
     set hidden
-    " gvim haluaa spell checkata kaikki, otan sen pois
+    " Not used to this feature in gVim, so am disabling it.
     set nospell
+    " Allows using alt in mappings instead of toggling the window manager's
+    " actions.
     " Enabling Windows shortcuts for gvim - Vim Tips Wiki
     " http://vim.wikia.com/wiki/Enabling_Windows_shortcuts_for_gvim
         set winaltkeys=no
-    se cmdwinheight=2
+    set cmdwinheight=2
+    " When typing a search string in / mode, immediately jump to results after
+    " typing each key.
+    " Makes searching a bit faster.
     set incsearch
+    " Highlight search results, so I can see where the next n or N search jump
+    " will take me in advance.
     set hlsearch
 
-
-    " http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
+    " Move all backup and swap files to this directory
+    "     http://vim.wikia.com/wiki/Remove_swap_and_backup_files_from_your_working_directory
     set backupdir=~/vim-tmp/
     set directory=~/vim-tmp/
     " http://www.8t8.us/vim/vim.html
+    " I don't really use this anymore.
     set winminheight=0      " Allow windows to get fully squashed
 
 
@@ -53,6 +66,7 @@ map <f5> :silent set paste!<enter>:set paste?<enter>
 " pressing ,. will correct the case without interrupting the typing flow! :)
 imap ,. <esc>bv~gi
 
+" Old stuff, currently helps my fingers with split window navigation
     map <C-J> <C-W>
     map <C-K> <C-W>
 
@@ -61,14 +75,18 @@ imap ,. <esc>bv~gi
 " Add undo steps after each word.
 " Really useful when quickly editing.
     imap <space> <c-g>u<c-v><space>
+
 " Complete 'read last register (")' command by double ctrl+r
     cmap <c-r><c-r> <c-r>"
     imap <c-r><c-r> <c-r>"
-" Wordwise Ctrl-Y in insert mode - Vim Tips Wiki
-" http://vim.wikia.com/wiki/Wordwise_Ctrl-Y_in_insert_mode
-"
-inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
-inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
+
+" Copy remaining word from above or below.
+" Useful in situations where you need to repeat some code and don't want to
+" copy a whole line and edit parts of it.
+"     Wordwise Ctrl-Y in insert mode - Vim Tips Wiki
+"     http://vim.wikia.com/wiki/Wordwise_Ctrl-Y_in_insert_mode
+    inoremap <expr> <c-y> matchstr(getline(line('.')-1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
+    inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(\k\+\\|.\)')
 
 " camelcasemotion.vim
     " To avoid losing the (rarely used) |,| mapping (which repeats latest f, t, F or
@@ -89,6 +107,8 @@ inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(
 
 " ------------------------------
 " Neocomplcache
+" (code completion)
+" Most comments are from its help file.
 " ------------------------------
     " Recommended key-mappings.
     " <CR>: close popup and save indent.
@@ -108,14 +128,11 @@ inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(
     inoremap <expr><a-h> neocomplcache#smart_close_popup()."\<C-h>"
     inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
     inoremap <expr><a-y>  neocomplcache#close_popup()
-    " inoremap <expr><a-e>  neocomplcache#cancel_popup()
-    " imap <tab>   <c-n>
-    " imap <s-tab> <c-p>
-    " neocomplcache - Ultimate auto completion system for Vim : vim online
-    " http://www.vim.org/scripts/script.php?script_id=2620
+    " This is required so the plugin will activate.
+    " I usually want to use it.
     let g:neocomplcache_enable_at_startup = 1
     " When a capital letter is included in input, neocomplcache does
-    " not ignore the upper- and lowercase.
+    " not ignore the upper and lowercase.
     let g:neocomplcache_enable_smart_case = 0
     " Whether to select the first element or not
     let g:neocomplcache_enable_auto_select = 0
@@ -144,9 +161,9 @@ inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(
     " Own comment: the ultimate completion! :)
     let g:neocomplcache_enable_fuzzy_completion = 1
 
-" lähde: http://vim.wikia.com/wiki/Using_vim_as_an_IDE_all_in_one
 " --------------------
-" ShowMarks
+" ShowMarks plugin
+" Shows mark letter next to line number if any marks are set.
 " --------------------
 let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 let g:showmarks_enable = 1
@@ -165,52 +182,39 @@ vmap <leader>fx :!xmllint --format -<CR>
 
 " vim git plugins
 " http://www.osnews.com/story/21556/Using_Git_with_Vim
-set laststatus=2 " Enables the status line at the bottom of Vim
-set statusline=%{fugitive#statusline()}
+    set laststatus=2 " Enables the status line at the bottom of Vim
+    set statusline=%{fugitive#statusline()}
 
-" tätä tarvii tuo git plugin ja oikeastaan wiki plugin myös
+" My leader key <3
 let mapleader=","
 
-" tämä määrittää kaikki wikit joita käytän vimwikin kanssa
-let g:vimwiki_list = [
-    \{'path': '~/vimwiki/', 'path_html': '~/vimwiki/html/'}]
-
-" http://code.google.com/p/vimwiki/wiki/TagList4Vimwiki
-let tlist_vimwiki_settings = 'wiki;h:Headers'
-
 " Repeat last command and put cursor at start of change
+" Makes it faster to repeat a command for some actions.
 " http://vim.wikia.com/wiki/VimTip1142
 nmap . .`[
 
-" auttaa wikin editoimisessa
-" asettaa oikean syntaksivärityksen
-nmap <Leader>1 :se syntax=mediawiki<CR>
-" lisää otsikkotaso
-nmap <leader>+ I=<esc>A=<esc>
-" poista otsikkotaso
-nmap <leader>- 0x$x
+" Helpers with wiki markdown editing
+" Not polished, will be buggy.
+    " Set correct syntax
+    nmap <Leader>1 :se syntax=mediawiki<CR>
+    " Add level of heading
+    nmap <leader>+ I=<esc>A=<esc>
+    " Remove level of heading
+    nmap <leader>- 0x$x
 
-" http://projects.haskell.org/haskellmode-vim/
-filetype indent on
-" use ghc functionality for haskell files
-au Bufenter *.hs compiler ghc
-
-" configure browser for haskell_doc.vim
-let g:haddock_browser = "/usr/bin/firefox"
-
-" http://www.vim.org/scripts/download_script.php?src_id=7407
-let g:haskell_indent_if = 0
-let g:haskell_indent_case = 0
-
-"iunmap <C-g>S
-"iunmap <C-g><C-S>
-
+" Quickly move to last / next change with - and + keys.
 nmap - g;
 nmap + g,
+
+" Display whitespace characters such as tabs and EOL
+" I use this to clean Git commits, among other things.
 nmap <f11> :set list!<enter>
+
+" Toggle search highlighting on or off
 nmap <f12> :set hlsearch!<enter>
 
 " fugitive - Git integration!
+" Probably the best or second best plugin of them all.
     nmap <leader>gs :Gstatus<enter>
     nmap <leader>gd :Gdiff<enter>
     nmap <leader>gc :Gcommit<enter>
@@ -239,25 +243,30 @@ nmap <f12> :set hlsearch!<enter>
 " vimdiff navigation helpers based on these:
 " Welcome to Puneet¿s World » Usefull vimdiff commands to view diff and merge
 " http://puneetworld.com/archives/48
+"
+" I use these to partially stage git changes.
+" They don't work for merge conflicts yet.
 map <F3> :diffput<enter>
 map <F4> :diffget<enter>
+" Go to previous / next hunk in vimdiff mode.
 nmap <F7> [czz
 nmap <F8> ]czz
 
 " gitv plugin:
-" 4.2 Open Horizontal
-"
-" This is the default layout to use in browser mode. If set to 0 then browser
-" mode will open in a vertical split. If set to 1 then browser mode will open
-" in
-" a horizontal split. If set to 'auto' then browser mode will open in a
-" vertical
-" split unless the content fits better in a horizontal split, in which case it
-" will open horizontally.
-"
-" The commit browser width and height is automatically sized to best fit the
-" content in all modes and settings.
-let g:Gitv_OpenHorizontal = 1
+" (git log in vim)
+    " 4.2 Open Horizontal
+    "
+    " This is the default layout to use in browser mode. If set to 0 then browser
+    " mode will open in a vertical split. If set to 1 then browser mode will open
+    " in
+    " a horizontal split. If set to 'auto' then browser mode will open in a
+    " vertical
+    " split unless the content fits better in a horizontal split, in which case it
+    " will open horizontally.
+    "
+    " The commit browser width and height is automatically sized to best fit the
+    " content in all modes and settings.
+    let g:Gitv_OpenHorizontal = 1
 
 " TagList plugin
 nmap <c-t> :TlistToggle<enter>
@@ -266,25 +275,41 @@ nmap <c-t> :TlistToggle<enter>
 " Ostrygen au FileType cs
 au FileType cs set foldmethod=indent
 
-" ujihisa/neco-ghc - GitHub
-" https://github.com/ujihisa/neco-ghc
-" epic haskell completion
-    let $PATH=$PATH.":/home/mika/.cabal/bin"
+" Haskell
+    " http://projects.haskell.org/haskellmode-vim/
+    filetype indent on
+    " use ghc functionality for haskell files
+    au Bufenter *.hs compiler ghc
 
-" Superior Haskell Interaction Mode
-" SHIM
-" vim-scripts/Superior-Haskell-Interaction-Mode-SHIM - GitHub
-" https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM/
-    autocmd FileType haskell nmap <f10> :GhciRange<CR>
-    autocmd FileType haskell vmap <f10> :GhciRange<CR>
-    autocmd FileType haskell nmap <f9> :GhciFile<CR>
-    autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
-    let g:shim_ghciTimeout=2
+    " configure browser for haskell_doc.vim
+    let g:haddock_browser = "/usr/bin/firefox"
+
+    " I don't trust Vim's way of indenting Haskell code.
+    " I use my own style instead.
+    " http://www.vim.org/scripts/download_script.php?src_id=7407
+    let g:haskell_indent_if = 0
+    let g:haskell_indent_case = 0
+
+    " ujihisa/neco-ghc - GitHub
+    " https://github.com/ujihisa/neco-ghc
+    " epic haskell completion
+        let $PATH=$PATH.":/home/mika/.cabal/bin"
+
+    " Superior Haskell Interaction Mode
+    " SHIM
+    " vim-scripts/Superior-Haskell-Interaction-Mode-SHIM - GitHub
+    " https://github.com/vim-scripts/Superior-Haskell-Interaction-Mode-SHIM/
+        autocmd FileType haskell nmap <f10> :GhciRange<CR>
+        autocmd FileType haskell vmap <f10> :GhciRange<CR>
+        autocmd FileType haskell nmap <f9> :GhciFile<CR>
+        autocmd FileType haskell nmap <C-c><C-r> :GhciReload<CR>
+        let g:shim_ghciTimeout=2
 
 " Auto highlight current word when idle - Vim Tips Wiki
 " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
     " Highlight all instances of word under cursor, when idle.
-    " Useful when studying strange source code.
+    " Useful when studying strange source code
+    " or when resolving merge conflicts.
     " Type z/ to toggle highlighting on/off.
     nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
     function! AutoHighlightToggle()
@@ -306,6 +331,7 @@ au FileType cs set foldmethod=indent
       endif
     endfunction
 
+" Fixes mysterious error gotten when using :GDiff on Windows
 " Error using the :GDiff command of fugitive.vim using gvim for windows and
 " msys git 1.7.0.2 - Stack Overflow
 " http://stackoverflow.com/questions/2932399/error-using-the-gdiff-command-of-fugitive-vim-using-gvim-for-windows-and-msys-g
@@ -317,6 +343,7 @@ set guifont="Monospace 9"
 " Removes tag completion from ctrl+n completion list.
 " If this is not done, the completion will take very long to complete.
 set complete=.,w,b,u,i
+
 " Open tag search. Makes it possible to open the tag list in insert mode on a
 " non-US keyboard.
 imap <c-a> <c-x><c-]>
