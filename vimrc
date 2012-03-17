@@ -87,16 +87,6 @@ inoremap <expr> <c-e> matchstr(getline(line('.')+1), '\%' . virtcol('.') . 'v\%(
     " map <leader><b> <leader>b
     " map <leader><w> <leader>w
 
-inoremap <Nul> <C-x><C-o>
-" ctrl+v inserts from x clipboard
-" inoremap <C-v> <Esc>:r !xclip -out<CR>
-
-" mini buffer explorer - plugin
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
-
 " ------------------------------
 " Neocomplcache
 " ------------------------------
@@ -324,22 +314,6 @@ set directory+=,~/tmp,$TMP
 "set guifont=Consolas:h9:cANSI
 set guifont="Monospace 9"
 
-" downloaded .Net 4 source code and extracted it to a local folder. Then ran
-"     ctags --recurse -f csharptags --extra=+fq --fields=+ianmzS --c#-kinds=cimnp "C:\Documents and Settings\
-"     Mika\Documents\RefSrc\Source\.Net\4.0\DEVDIV_TFS\Dev10\Releases\RTMRel\"
-" That resulted in a file called csharptags. When this file is loaded as a tag
-" file in Vim, I can search for existing words in the tag file.
-" I can also complete words based on all tags.
-"     set tags+=C:\projektit\csharptags
-" This bit includes all tag files in the current directory
-" Not sure if want.
-" Kevin's Vim Tips and Tricks
-" http://www.8t8.us/vim/vim.html
-" Hard-coded project tag files:
-    " eLogic
-    set tags+=~/ekassatime/eLogic/tags;
-    " eSoapApi
-    set tags+=~/ekassatime/eSoapApi/tags;
 " Removes tag completion from ctrl+n completion list.
 " If this is not done, the completion will take very long to complete.
 set complete=.,w,b,u,i
@@ -350,13 +324,6 @@ imap <c-a> <c-x><c-]>
 " Fugitive.vim - browsing the git object database
 " http://vimcasts.org/episodes/fugitive-vim-browsing-the-git-object-database/
 autocmd BufReadPost fugitive://* set bufhidden=delete
-
-"
-map <a-t> :TBEMinimal<enter>
-" For CamelCaseMotion plugin
-"    map <a-e> <leader>e
-"    map <a-w> <leader>w
-"    map <a-b> <leader>b
 
 " Set up c# building!
     "set makeprg=msbuild\ /nologo\ /v:Detailed\ /property:OutputPath=bin\Debug\ /property:GenerateFullPaths=true
