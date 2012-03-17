@@ -1,27 +1,12 @@
-" Hard-coded for Windows and cygwin.
-" If not set to windows path, diffs cannot be displayed,
-" possibly other errors exist but have not been discovered.
-"if $SHELL =~ 'bin/fish'
-"    set shell=/bin/sh
-"endif
-" The idea is, on Windows, that this shell is the default when starting
-" so that git mergetool works (diff generation)
-" Then, when vim is started, we can switch to cmd.exe so that other stuff
-" works as well. :)
-" TODO doesn't work
-" set shell=c:\cygwin\bin\sh.exe
-
 " ----------------
 " Settings section
 " ----------------
     se nu
     syntax on
     set t_Co=256
-    "colorscheme desert256
     se background=dark
-    "colorscheme solarized
     colorscheme zenburn
-    set autoindent "teslti
+    set autoindent
     set backspace=2
     set expandtab
     set tabstop=4
@@ -30,7 +15,6 @@
     set ruler
     set scrolloff=1
     set tildeop
-    "inoremap < <><ESC>i
     set matchpairs=(:),{:},[:],<:>
     set ignorecase
     filetype plugin on
@@ -183,11 +167,6 @@ highlight Pmenu ctermbg=238 gui=bold
 
 " http://vim.wikia.com/wiki/Omni_completion
 set ofu=syntaxcomplete#Complete
-
-"always use command editing window
-"nnoremap : q:i
-"nnoremap / q/i
-"nnoremap ? q?i
 
 " indenting xml
 " http://uucode.com/blog/2005/06/15/indenting-xml-in-vim/
