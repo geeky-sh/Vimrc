@@ -11,6 +11,11 @@
 " TODO doesn't work
 " set shell=c:\cygwin\bin\sh.exe
 
+" Tmux
+" I use Tmux to construct ad-hoc IDEs depending on the problem at hand.
+    " Display background properly when editing in tmux
+    set term=screen-256color
+
 " ----------------
 " Settings section
 " ----------------
