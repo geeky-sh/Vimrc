@@ -34,6 +34,15 @@ cmap TT :call To_Tmux()<CR>
 " I map shell commands with the mapping "prefix" <leader>s
 " so they also work as a mnemonic.
 
+    " Reset shell to normal mode.
+    " In many cases I want to look at something from the shell, but it's
+    " already displaying something. This mapping will attempt to reset the
+    " shell to its normal mode (command line active).
+    " Do this by sending
+    " - Q (gets out of less). Erase the q afterwards with a backspace character.
+    " - <c-c> (gets out of many programs) and q.
+    map <leader>sr :TT q<c-v><enter>:TT <c-v><enter>
+
     " Show Git log
     " Uses my custom bash_profile alias
     map <leader>sgl :TT gl<enter>
