@@ -263,8 +263,8 @@ nmap <f12> :set hlsearch!<enter>
     vmap <leader>dws :s/\s\+$//ge<enter>
     " Ignore whitespace in diffs.
     " Also shows current diffopt status.
-    nmap <kPlus>  :set diffopt+=iwhite<enter>:set diffopt<enter>
-    nmap <kMinus> :set diffopt-=iwhite<enter>:set diffopt<enter>
+    nmap <leader>s :set diffopt+=iwhite<enter>:set diffopt<enter>
+    nmap <leader>S :set diffopt-=iwhite<enter>:set diffopt<enter>
 
 " Align plugin stuff
     " Align by words.
