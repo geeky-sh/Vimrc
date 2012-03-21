@@ -44,7 +44,7 @@ cmap TT :call To_Tmux()<CR>
     map <leader>sgl :TT monitor git diff --cached --color<enter>
 
     " Change shell directory to directory in Vim.
-    map <leader>scd :TT cd "<c-r>=expand("%:p:h")"<enter>
+    map <leader>scd :TT cd "<c-r>=expand("%:p:h")<enter>"<enter>
 " --------------------------------------------------------------------------------
 " ----------------
 " Settings section
