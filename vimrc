@@ -18,6 +18,16 @@
     " Display background properly when editing in tmux
     set term=screen-256color
 
+" A minimalistic user interface for tslime.vim
+    " Send Commands From VIM to Tmux Pane - candland.net
+    " http://candland.net/2011/11/23/send-commands-from-vim-to-tmux-pane/
+function! To_Tmux()
+    let b:text = input("tmux:", "", "custom,")
+    call Send_to_Tmux(b:text . "\n")
+endfunction
+
+cmap TT :call To_Tmux()<CR>
+
 " --------------------------------------------------------------------------------
 " ----------------
 " Settings section
