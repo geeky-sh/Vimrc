@@ -41,7 +41,7 @@ cmap TT :call To_Tmux()<CR>
     " Monitor Git staging area with "watch" program.
     " Note that I have an alias for "monitor" in my bash_profile as well (it
     " calls watch).
-    map <leader>sgl :TT monitor git diff --cached --color<enter>
+    map <leader>sgL :TT monitor git diff --cached --color<enter>
 
     " Change shell directory to directory in Vim.
     map <leader>scd :TT cd "<c-r>=expand("%:p:h")<enter>"<enter>
