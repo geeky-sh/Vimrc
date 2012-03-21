@@ -28,6 +28,23 @@ endfunction
 
 cmap TT :call To_Tmux()<CR>
 
+" Tmux mappings
+" The use of these makes VIM act more like an IDE.
+" This is a great feature.
+" I map shell commands with the mapping "prefix" <leader>s
+" so they also work as a mnemonic.
+
+    " Show Git log
+    " Uses my custom bash_profile alias
+    map <leader>sgl :TT gl<enter>
+
+    " Monitor Git staging area with "watch" program.
+    " Note that I have an alias for "monitor" in my bash_profile as well (it
+    " calls watch).
+    map <leader>sgl :TT monitor git diff --cached --color<enter>
+
+    " Change shell directory to directory in Vim.
+    map <leader>scd :TT cd "<c-r>=expand("%:p:h")"<enter>
 " --------------------------------------------------------------------------------
 " ----------------
 " Settings section
