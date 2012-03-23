@@ -1,3 +1,74 @@
+" Hard-coded for Windows and cygwin.
+" If not set to windows path, diffs cannot be displayed,
+" possibly other errors exist but have not been discovered.
+"if $SHELL =~ 'bin/fish'
+"    set shell=/bin/sh
+"endif
+" The idea is, on Windows, that this shell is the default when starting
+" so that git mergetool works (diff generation)
+" Then, when vim is started, we can switch to cmd.exe so that other stuff
+" works as well. :)
+" TODO doesn't work
+" set shell=c:\cygwin\bin\sh.exe
+
+
+call pathogen#infect()
+
+" --------------------------------------------------------------------------------
+" Tmux
+" I use Tmux to construct ad-hoc IDEs depending on the problem at hand.
+    " Display background properly when editing in tmux
+    set term=screen-256color
+
+" A minimalistic user interface for tslime.vim
+    " Send Commands From VIM to Tmux Pane - candland.net
+    " http://candland.net/2011/11/23/send-commands-from-vim-to-tmux-pane/
+function! To_Tmux()
+    let b:text = input("tmux:", "", "custom,")
+    call Send_to_Tmux(b:text . "\n")
+endfunction
+
+cmap TT :call To_Tmux()<CR>
+
+" Tmux mappings
+" The use of these makes VIM act more like an IDE.
+" This is a great feature.
+" I map shell commands with the mapping "prefix" <leader>s
+" so they also work as a mnemonic.
+
+    " Reset shell to normal mode.
+    " In many cases I want to look at something from the shell, but it's
+    " already displaying something. This mapping will attempt to reset the
+    " shell to its normal mode (command line active).
+    " Do this by sending
+    " - Q (gets out of less). Erase the q afterwards with a backspace character.
+    " - <c-c> (gets out of many programs) and q.
+    map <leader>sr :TT q<c-v><enter>:TT <c-v><enter>
+
+    " Show Git log
+    " Uses my custom bash_profile alias
+    map <leader>sgl :TT gl<enter>
+
+    " Monitor Git staging area with "watch" program.
+    " Note that I have an alias for "monitor" in my bash_profile as well (it
+    " calls watch).
+    map <leader>sgL :TT monitor git diff --cached --color<enter>
+
+    " Change shell directory to directory in Vim.
+    map <leader>scd :TT cd "<c-r>=expand("%:p:h")<enter>"<enter>
+
+    " Using mono csharp REPL from within VIM
+	" Open in tmux split and off you go.
+	" You can set automatically loaded state in ~/.config/csharp/ as scripts
+	" (or symlinks).
+    " TODO move to c# section, load only when editing a c# file.
+	" Mnemonic: REPL reload
+    map <leader>rr quit;<CR>:TT csharp<CR>
+	" Send current line to tmux.
+	" Can be used with a REPL but also with something else as well I guess.
+	map <leader><enter> yy:TT<C-R><C-R><CR>
+" --------------------------------------------------------------------------------
+
 " ----------------
 " Settings section
 " ----------------
@@ -231,8 +302,8 @@ nmap <f12> :set hlsearch!<enter>
     vmap <leader>dws :s/\s\+$//ge<enter>
     " Ignore whitespace in diffs.
     " Also shows current diffopt status.
-    nmap <kPlus>  :set diffopt+=iwhite<enter>:set diffopt<enter>
-    nmap <kMinus> :set diffopt-=iwhite<enter>:set diffopt<enter>
+    nmap <leader>s :set diffopt+=iwhite<enter>:set diffopt<enter>
+    nmap <leader>S :set diffopt-=iwhite<enter>:set diffopt<enter>
 
 " Align plugin stuff
     " Align by words.
