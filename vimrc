@@ -12,6 +12,8 @@
 " set shell=c:\cygwin\bin\sh.exe
 
 
+call pathogen#infect()
+
 " --------------------------------------------------------------------------------
 " Tmux
 " I use Tmux to construct ad-hoc IDEs depending on the problem at hand.
@@ -66,6 +68,7 @@ cmap TT :call To_Tmux()<CR>
 	" Can be used with a REPL but also with something else as well I guess.
 	map <leader><enter> yy:TT<C-R><C-R><CR>
 " --------------------------------------------------------------------------------
+
 " ----------------
 " Settings section
 " ----------------
