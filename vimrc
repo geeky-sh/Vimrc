@@ -54,6 +54,17 @@ cmap TT :call To_Tmux()<CR>
 
     " Change shell directory to directory in Vim.
     map <leader>scd :TT cd "<c-r>=expand("%:p:h")<enter>"<enter>
+
+    " Using mono csharp REPL from within VIM
+	" Open in tmux split and off you go.
+	" You can set automatically loaded state in ~/.config/csharp/ as scripts
+	" (or symlinks).
+    " TODO move to c# section, load only when editing a c# file.
+	" Mnemonic: REPL reload
+    map <leader>rr quit;<CR>:TT csharp<CR>
+	" Send current line to tmux.
+	" Can be used with a REPL but also with something else as well I guess.
+	map <leader><enter> yy:TT<C-R><C-R><CR>
 " --------------------------------------------------------------------------------
 " ----------------
 " Settings section
