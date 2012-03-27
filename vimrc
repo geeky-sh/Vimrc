@@ -160,6 +160,11 @@ imap ,. <esc>bv~gi
     " input is less than 8 characters.
     " Own comment: the ultimate completion! :)
     let g:neocomplcache_enable_fuzzy_completion = 1
+    " This variable controls length of fuzzy completion start length.
+    " For example, If this variable is "3", third and after input characters are
+    " fuzzy matched.  But first and second input characters are not
+    " fuzzy matched.
+    let g:neocomplcache_fuzzy_completion_start_length = 1
 
 " --------------------
 " ShowMarks plugin
