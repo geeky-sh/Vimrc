@@ -80,7 +80,7 @@ cmap TT :call To_Tmux()<CR>
     set t_Co=256
     set background=dark
     " This looks about the same in terminal Vim and in gVim
-    colorscheme zenburn
+    colorscheme jellybeans
 
     set autoindent
     set backspace=2
