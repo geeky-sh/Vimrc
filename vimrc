@@ -501,3 +501,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 " Buffet plugin configuration
     map <leader>ä :Bufferlist<enter>
+" easymotion configuration
+    highlight link EasyMotionShade  Comment
+    highlight link EasyMotionTarget ErrorMsg
