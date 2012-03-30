@@ -497,25 +497,3 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 " easymotion configuration
     highlight link EasyMotionShade  Comment
     highlight link EasyMotionTarget ErrorMsg
-" ctrlp configuration
-    " Map default key <c-p> to <leader>t
-    " This is because I got used to the Command-t plugin and its default
-    " mapping. :)
-    let g:ctrlp_map = '<Leader>t'
-    " Set this to 1 to follow symbolic links when listing files: >
-    let g:ctrlp_follow_symlinks=1
-    let g:ctrlp_max_height=80
-    " Use this to customize the mappings inside |CtrlP|’s prompt to your
-    " liking. You only need to keep the lines that you’ve changed the values
-    " (inside []):
-    let g:ctrlp_prompt_mappings = {
-        \ 'PrtSelectMove("j")':   ['<c-n>'],
-        \ 'PrtSelectMove("k")':   ['<c-p>'],
-        \ 'PrtHistory(1)':        ['<down>'],
-        \ 'PrtHistory(-1)':       ['<up>'],
-        \ }
-    " Custom search command that ignores git directories.
-    " If not specified, will fill the ctrlp list with git object directory
-    " spam.
-    let g:ctrlp_user_command = 'find -L %s -not -path *.git/*'
-
