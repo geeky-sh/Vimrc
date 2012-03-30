@@ -503,3 +503,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
     " This is because I got used to the Command-t plugin and its default
     " mapping. :)
     map <Leader>t :Unite buffer file file_mru<cr>
+" vimshell configuration
+    nmap <leader>r :VimShell<cr>
+" 
