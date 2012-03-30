@@ -521,3 +521,8 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
         \ 'PrtHistory(1)':        ['<down>'],
         \ 'PrtHistory(-1)':       ['<up>'],
         \ }
+    " Custom search command that ignores git directories.
+    " If not specified, will fill the ctrlp list with git object directory
+    " spam.
+    let g:ctrlp_user_command = 'find -L %s -not -path *.git/*'
+
