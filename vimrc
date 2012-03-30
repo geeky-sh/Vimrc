@@ -505,4 +505,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
     map <Leader>t :Unite buffer file file_mru<cr>
 " vimshell configuration
     nmap <leader>r :VimShell<cr>
-" 
+" vimfiler configuration
+    " Opens VimFiler, replacing the current window/tab/buffer with it
+    nmap <leader>f :VimFiler<cr>
