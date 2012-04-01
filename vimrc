@@ -119,6 +119,9 @@ cmap TT :call To_Tmux()<CR>
     " I don't really use this anymore.
     set winminheight=0      " Allow windows to get fully squashed
 
+    " Use a menu for command line completion.
+    set wildmenu
+
 
 " Paste toggle mapping for reliable pasting.
 " Toggles paste on/off and shows the present value.
